@@ -3,7 +3,7 @@ import mysql.connector
 from voiture import Voiture
 
 
-#Methode1 connecter_db
+# Créer la fonction connecter_db
 
 def connecter_db():
     with open("config.json", "r") as fichier:
@@ -18,7 +18,7 @@ def connecter_db():
 
     return connexion
 
-#methode2 ajouter_voiture
+# Créer la fonction ajouter_voiture
 
 def ajouter_voiture(voiture):
     connexion = connecter_db()
@@ -42,6 +42,17 @@ def ajouter_voiture(voiture):
     valeurs = (voiture.marque, voiture.modele, voiture.annee, voiture.prix)
 
     curseur.execute(requete, valeurs)
+    connexion.commit()
+
+    curseur.close()
+    connexion.close()
+
+# Créer la fonction supprimer_voiture
+def supprimer_voiture(id):
+    connexion = connecter_db()
+    curseur = connexion.cursor()
+
+    curseur.execute("DELETE FROM voiture WHERE id = %s", (id,))
     connexion.commit()
 
     curseur.close()
