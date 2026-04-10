@@ -1,5 +1,6 @@
-from crud_db import supprimer_voiture
+from crud_db import recuperer_voitures
 
-supprimer_voiture(2)
+voitures = recuperer_voitures()
 
-print("Voiture supprimée")
+for v in voitures:
+    v.afficher_voiture()
