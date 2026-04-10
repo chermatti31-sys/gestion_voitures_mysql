@@ -2,7 +2,6 @@ import json
 import mysql.connector
 from voiture import Voiture
 
-
 # Création de la fonction connecter_db
 
 def connecter_db():
@@ -48,6 +47,7 @@ def ajouter_voiture(voiture):
     connexion.close()
 
 # Création de la fonction supprimer_voiture
+
 def supprimer_voiture(id):
     connexion = connecter_db()
     curseur = connexion.cursor()
