@@ -1,6 +1,8 @@
-from crud_db import recuperer_voitures
+from voiture import Voiture
+from crud_db import modifier_voiture
 
-voitures = recuperer_voitures()
+v1 = Voiture("Audi", "A3", 2026, 62000, 1)
 
-for v in voitures:
-    v.afficher_voiture()
+modifier_voiture(v1)
+
+print("Voiture modifiée avec succès")

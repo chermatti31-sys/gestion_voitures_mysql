@@ -3,7 +3,7 @@ import mysql.connector
 from voiture import Voiture
 
 
-# Créer la fonction connecter_db
+# Création de la fonction connecter_db
 
 def connecter_db():
     with open("config.json", "r") as fichier:
@@ -18,7 +18,7 @@ def connecter_db():
 
     return connexion
 
-# Créer la fonction ajouter_voiture
+# Création de la fonction ajouter_voiture
 
 def ajouter_voiture(voiture):
     connexion = connecter_db()
@@ -47,7 +47,7 @@ def ajouter_voiture(voiture):
     curseur.close()
     connexion.close()
 
-# Créer la fonction supprimer_voiture
+# Création de la fonction supprimer_voiture
 def supprimer_voiture(id):
     connexion = connecter_db()
     curseur = connexion.cursor()
@@ -59,7 +59,7 @@ def supprimer_voiture(id):
     connexion.close()
 
 
-#Créer la fonction recuperer_voitures()
+#Création de la fonction recuperer_voitures()
 
 def recuperer_voitures():
     connexion = connecter_db()
@@ -79,3 +79,23 @@ def recuperer_voitures():
     connexion.close()
 
     return liste
+
+# Création de la fonction modifier_ voiture(voiture)
+
+def modifier_voiture(voiture):
+    connexion = connecter_db()
+    curseur = connexion.cursor()
+
+    requete = """
+        UPDATE voiture
+        SET marque=%s, modele=%s, annee=%s, prix=%s
+        WHERE id=%s
+    """
+
+    valeurs = (voiture.marque, voiture.modele, voiture.annee, voiture.prix, voiture.id)
+
+    curseur.execute(requete, valeurs)
+    connexion.commit()
+
+    curseur.close()
+    connexion.close()
