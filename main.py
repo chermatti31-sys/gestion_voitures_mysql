@@ -1,8 +1,9 @@
 from voiture import Voiture
-from crud_db import modifier_voiture
+from crud_db import ajouter_voiture, supprimer_voiture, recuperer_voitures
 
-v1 = Voiture("Audi", "A3", 2026, 62000, 1)
 
-modifier_voiture(v1)
+v1 = Voiture("Mercedes", "Classe C", 2024, 55000)
 
-print("Voiture modifiée avec succès")
+ajouter_voiture(v1)
+
+print("Mercedes ajoutée avec succès")
